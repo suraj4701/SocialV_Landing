@@ -26,7 +26,6 @@ describe('Home Page Link Verifications', () => {
         const exploreSocialVWebLinkLocator = page.locator("//body/div[@id='main-container']/main[@id='main']/div[1]/article[1]/div[1]/div[1]/div[4]/div[1]/div[1]/div[3]/div[1]/div[4]/div[1]/div[1]/a[1]");
         await exploreSocialVWebLinkLocator.scrollIntoViewIfNeeded();
         await exploreSocialVWebLinkLocator.click();
-        await page.waitForURL("https://socialv.iqonic.design/product-web/");
         const newPageUrl = page.url();
         expect(newPageUrl).toBe("https://socialv.iqonic.design/product-web/");
     });
@@ -35,7 +34,6 @@ describe('Home Page Link Verifications', () => {
         const exploreSocialVAppLinkLocator = page.locator("//body/div[@id='main-container']/main[@id='main']/div[1]/article[1]/div[1]/div[1]/div[4]/div[1]/div[1]/div[3]/div[2]/div[4]/div[1]/div[1]/a[1]");
         await exploreSocialVAppLinkLocator.scrollIntoViewIfNeeded();
         await exploreSocialVAppLinkLocator.click();
-        await page.waitForURL("https://socialv.iqonic.design/product-app/");
         const newPageUrl = page.url();
         expect(newPageUrl).toBe("https://socialv.iqonic.design/product-app/");
     });
@@ -50,7 +48,6 @@ describe('Home Page Link Verifications', () => {
         const learnMoreCommunityLinkLocator = page.locator("//body/div[@id='main-container']/main[@id='main']/div[1]/article[1]/div[1]/div[1]/div[6]/div[1]/div[1]/div[4]/div[1]/div[1]/a[1]");
         await learnMoreCommunityLinkLocator.scrollIntoViewIfNeeded();
         await learnMoreCommunityLinkLocator.click();
-        await page.waitForURL("https://socialv.iqonic.design/use-cases-communities/");
         const newPageUrl = page.url();
         expect(newPageUrl).toBe("https://socialv.iqonic.design/use-cases-communities/");
     });
@@ -59,7 +56,6 @@ describe('Home Page Link Verifications', () => {
         const learnMoreCoursesLinkLocator = page.locator("//body/div[@id='main-container']/main[@id='main']/div[1]/article[1]/div[1]/div[1]/div[7]/div[1]/div[2]/div[4]/div[1]/div[1]/a[1]");
         await learnMoreCoursesLinkLocator.scrollIntoViewIfNeeded();
         await learnMoreCoursesLinkLocator.click();
-        await page.waitForURL("https://socialv.iqonic.design/use-cases-online-courses/");
         const newPageUrl = page.url();
         expect(newPageUrl).toBe("https://socialv.iqonic.design/use-cases-online-courses/");
     });
@@ -80,7 +76,6 @@ describe('Home Page Link Verifications', () => {
         const viewPricingLinkLocator = page.locator("//body/div[@id='main-container']/main[@id='main']/div[1]/article[1]/div[1]/div[1]/div[10]/div[1]/div[1]/div[2]/div[2]/div[3]/div[1]/div[1]/a[1]");
         await viewPricingLinkLocator.scrollIntoViewIfNeeded();
         await viewPricingLinkLocator.click();
-        await page.waitForURL("https://socialv.iqonic.design/pricing/");
         const newPageUrl = page.url();
         expect(newPageUrl).toBe("https://socialv.iqonic.design/pricing/");
     });
@@ -118,45 +113,29 @@ describe('Home Page Link Verifications', () => {
     test("Facebook link verify", async ({ page }) => {
         const facebookLinkLocator = page.locator("//body/div[@id='main-container']/footer[@id='footer']/div[1]/div[1]/article[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]/div[1]/span[1]/a[1]");
         await facebookLinkLocator.scrollIntoViewIfNeeded();
-        const [newPage] = await Promise.all([
-            page.context().waitForEvent('page'),
-            facebookLinkLocator.click()
-        ]);
-        const newPageUrl = newPage.url();
-        expect(newPageUrl).toBe("https://www.facebook.com/iqonicdesign");
+        const link = "https://www.facebook.com/iqonicdesign";
+        await CommonLinkVerify(page, facebookLinkLocator, link);
     });
 
     test("YouTube link verify", async ({ page }) => {
         const youtubeLinkLocator = page.locator("//body/div[@id='main-container']/footer[@id='footer']/div[1]/div[1]/article[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]/div[1]/span[3]/a[1]");
         await youtubeLinkLocator.scrollIntoViewIfNeeded();
-        const [newPage] = await Promise.all([
-            page.context().waitForEvent('page'),
-            youtubeLinkLocator.click()
-        ]);
-        const newPageUrl = newPage.url();
-        expect(newPageUrl).toBe("https://www.youtube.com/c/IqonicDesign");
+        const link = "https://www.youtube.com/c/IqonicDesign";
+        await CommonLinkVerify(page, youtubeLinkLocator, link);
     });
 
     test("LinkedIn link verify", async ({ page }) => {
         const linkedInLinkLocator = page.locator("//body/div[@id='main-container']/footer[@id='footer']/div[1]/div[1]/article[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]/div[1]/span[4]/a[1]");
         await linkedInLinkLocator.scrollIntoViewIfNeeded();
-        const [newPage] = await Promise.all([
-            page.context().waitForEvent('page'),
-            linkedInLinkLocator.click()
-        ]);
-        const newPageUrl = newPage.url();
-        expect(newPageUrl).toBe("https://in.linkedin.com/company/iqonicthemes");
+        const link = "https://in.linkedin.com/company/iqonicthemes";
+        await CommonLinkVerify(page, linkedInLinkLocator, link);
     });
 
     test("Instagram link verify", async ({ page }) => {
         const instagramLinkLocator = page.locator("//body/div[@id='main-container']/footer[@id='footer']/div[1]/div[1]/article[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]/div[1]/span[2]/a[1]");
         await instagramLinkLocator.scrollIntoViewIfNeeded();
-        const [newPage] = await Promise.all([
-            page.context().waitForEvent('page'),
-            instagramLinkLocator.click()
-        ]);
-        const newPageUrl = newPage.url();
-        expect(newPageUrl).toBe("https://www.instagram.com/iqonicdesign/");
+        const link = "https://www.instagram.com/iqonicdesign/";
+        await CommonLinkVerify(page, instagramLinkLocator, link);
     });
 
     test("Footer Why We're Different", async ({ page }) => {

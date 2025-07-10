@@ -1,6 +1,5 @@
 import { beforeEach, describe, test } from '@playwright/test';
 import { BookcallVerify, CommonLinkVerify, EnvantoSocialVVerify, SocialVAppAppStore, SocialVAppPlaystore, TrustpilotVerify } from './common';
-
 const home_url = process.env.HOME_URL;
 
 describe('WeDifferent Page Link Verifications', () => {

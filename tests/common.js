@@ -24,7 +24,7 @@ const UserWebsiteVerify = async (page, locator) => {
     const urlObject = new URL(newPageUrl);
     const urlWithoutQueryParams = urlObject.origin + urlObject.pathname;
     expect(urlWithoutQueryParams).toBe("https://socialv-wordpress.iqonic.design/login/");
-     return newPage;
+    return newPage;
 }
 
 const BookcallVerify = async (page, locator) => {
@@ -61,6 +61,18 @@ const EnvantoSocialVLinkVerify = async (page, locator) => {
     const iqonicDesignSpanLocator = newPage.locator("//body/div[1]/div[3]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/h1[1]");
     const verifytext = await iqonicDesignSpanLocator.textContent();
     expect(verifytext).toContain('SocialV - Social Network and Community BuddyPress Theme');
+    return newPage;
+}
+
+const EnvantoSocialVAppLinkVerify = async (page, locator) => {
+
+    const [newPage] = await Promise.all([
+        page.context().waitForEvent('page'),
+        locator.click()
+    ])
+    const iqonicDesignSpanLocator = newPage.locator("//body/div[1]/div[3]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/h1[1]");
+    const verifytext = await iqonicDesignSpanLocator.textContent();
+    expect(verifytext).toContain('SocialV - Social Network Flutter App with BuddyPress (WordPress) Backend');
     return newPage;
 }
 
@@ -103,4 +115,4 @@ const SocialVAppAppStore = async (page, locator) => {
     return newPage;
 }
 
-module.exports = { TrustpilotVerify, UserWebsiteVerify, BookcallVerify, EnvantoSocialVVerify, EnvantoSocialVLinkVerify, CommonLinkVerify, SocialVAppPlaystore, SocialVAppAppStore };
+module.exports = { TrustpilotVerify, UserWebsiteVerify, BookcallVerify, EnvantoSocialVVerify, EnvantoSocialVLinkVerify, EnvantoSocialVAppLinkVerify, CommonLinkVerify, SocialVAppPlaystore, SocialVAppAppStore };
