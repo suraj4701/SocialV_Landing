@@ -40,12 +40,12 @@ describe('ProductApp Page Link Verifications', () => {
         await SocialVAppPlaystore(page, playstoreLocator);
     });
 
-    // test("NetworkUA", async ({ page }) => {
-    //     const profileFriendsLinkLocator = page.locator("//body/div[@id='main-container']/main[@id='main']/div[1]/article[1]/div[1]/div[1]/div[6]/div[1]/div[1]/div[3]/div[1]/div[2]/div[1]/div[1]/a[1]");
-    //     await profileFriendsLinkLocator.scrollIntoViewIfNeeded();
-    //     const expectedLink = "https://socialv-wordpress.iqonic.design/members/marvin/friends/";
-    //     await CommonLinkVerify(page, profileFriendsLinkLocator, expectedLink);
-    // });
+    test("NetworkUA", async ({ page }) => {
+        const profileFriendsLinkLocator = page.locator("//body/div[@id='main-container']/main[@id='main']/div[1]/article[1]/div[1]/div[1]/div[6]/div[1]/div[1]/div[3]/div[1]/div[2]/div[1]/div[1]/a[1]");
+        await profileFriendsLinkLocator.scrollIntoViewIfNeeded();
+        const expectedLink = "https://play.google.com/store/apps/details?id=com.network.ua";
+        await CommonLinkVerify(page, profileFriendsLinkLocator, expectedLink);
+    });
 
     test("Cafetoday", async ({ page }) => {
         const profileFriendsLinkLocator = page.locator("//body/div[@id='main-container']/main[@id='main']/div[1]/article[1]/div[1]/div[1]/div[6]/div[1]/div[1]/div[3]/div[2]/div[2]/div[1]/div[1]/a[1]");
