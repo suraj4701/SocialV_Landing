@@ -190,7 +190,7 @@ describe('Products Web Page Link Verifications', () => {
     });
 
     test("Talk to a Product Expert link verify", async ({ page }) => {
-        const talkToExpertLinkLocator = page.locator("//body/div[@id='main-container']/main[@id='main']/div[1]/article[1]/div[1]/div[1]/div[15]/div[1]/div[1]/div[3]/div[1]/div[1]/a[1]");
+        const talkToExpertLinkLocator = page.locator("//div[@class='elementor-element elementor-element-00b1469 elementor-align-left elementor-widget elementor-widget-button']//a[@class='elementor-button elementor-button-link elementor-size-sm']");
         await BookcallVerify(page, talkToExpertLinkLocator);
     });
 

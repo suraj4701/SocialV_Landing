@@ -109,7 +109,7 @@ describe('ProductApp Page Link Verifications', () => {
     });
 
     test("Book a Quick call 2", async ({ page }) => {
-        const bookCallLinkLocator = page.locator("//body/div[@id='main-container']/main[@id='main']/div[1]/article[1]/div[1]/div[1]/div[9]/div[1]/div[1]/div[3]/div[1]/div[1]/a[1]");
+        const bookCallLinkLocator = page.locator("//div[@class='elementor-element elementor-element-00b1469 elementor-align-left elementor-widget elementor-widget-button']//a[@class='elementor-button elementor-button-link elementor-size-sm']");
         await bookCallLinkLocator.scrollIntoViewIfNeeded();
         await BookcallVerify(page, bookCallLinkLocator);
     });

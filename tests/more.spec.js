@@ -13,7 +13,7 @@ describe('More Page Link Verifications', () => {
     test("Book Demo Call", async ({ page }) => {
         await page.goto(home_url);
         const ondemandLocator = page.locator("//li[@id='menu-item-9335']")
-        const expectedLink = "https://tidycal.com/iqonicdesign/socialv-demo";
+        const expectedLink = "https://socialv.iqonic.design/socialv-demo-call/";
         await CommonLinkVerify(page, ondemandLocator, expectedLink);
     });
 

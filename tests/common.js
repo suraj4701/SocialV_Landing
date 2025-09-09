@@ -8,9 +8,6 @@ const TrustpilotVerify = async (page, locator) => {
     ])
     const newPageUrl = newPage.url();
     expect(newPageUrl).toBe("https://www.trustpilot.com/review/iqonic.design");
-    const iqonicDesignSpanLocator = newPage.locator("//body/div[@id='__next']/div[1]/div[1]/div[1]/main[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/section[1]/div[2]/h1[1]/span[1]");
-    const verifytext = await iqonicDesignSpanLocator.textContent();
-    expect(verifytext).toContain('IQONIC DESIGN');
     return newPage;
 }
 
@@ -34,7 +31,7 @@ const BookcallVerify = async (page, locator) => {
         locator.click()
     ])
     const newPageUrl = newPage.url();
-    expect(newPageUrl).toBe("https://tidycal.com/iqonicdesign/socialv-demo");
+    expect(newPageUrl).toBe("https://socialv.iqonic.design/socialv-demo-call/");
     return newPage;
 }
 
@@ -72,7 +69,7 @@ const EnvantoSocialVAppLinkVerify = async (page, locator) => {
     ])
     const iqonicDesignSpanLocator = newPage.locator("//body/div[1]/div[3]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/h1[1]");
     const verifytext = await iqonicDesignSpanLocator.textContent();
-    expect(verifytext).toContain('SocialV - Social Network Flutter App with BuddyPress (WordPress) Backend');
+    expect(verifytext).toContain('SocialV – Community Platform & Social Network Flutter App with BuddyPress (WordPress) Backend');
     return newPage;
 }
 

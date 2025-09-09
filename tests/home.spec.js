@@ -13,7 +13,7 @@ describe('Home Page Link Verifications', () => {
     });
 
     test("User Website link verify", async ({ page }) => {
-        const userWebsiteLinkLocator = page.locator("//body/div[@id='main-container']/main[@id='main']/div[1]/article[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[5]/div[1]/div[1]/div[1]/div[1]/a[1]");
+        const userWebsiteLinkLocator = page.locator("//div[@class='elementor-element elementor-element-26dfdb9 elementor-align-left elementor-widget__width-auto elementor-widget elementor-widget-button']//a[@class='elementor-button elementor-button-link elementor-size-sm']");
         await UserWebsiteVerify(page, userWebsiteLinkLocator);
     });
 
@@ -39,7 +39,7 @@ describe('Home Page Link Verifications', () => {
     });
 
     test("Book a Demo call", async ({ page }) => {
-        const bookDemoCallLinkLocator = page.locator("//body/div[@id='main-container']/main[@id='main']/div[1]/article[1]/div[1]/div[1]/div[5]/div[1]/div[1]/div[3]/div[1]/div[1]/a[1]");
+        const bookDemoCallLinkLocator = page.locator("//div[@class='elementor-element elementor-element-00b1469 elementor-align-left elementor-widget elementor-widget-button']//a[@class='elementor-button elementor-button-link elementor-size-sm']");
         await bookDemoCallLinkLocator.scrollIntoViewIfNeeded();
         await BookcallVerify(page, bookDemoCallLinkLocator);
     });
