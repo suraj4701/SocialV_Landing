@@ -1,5 +1,5 @@
 import { describe, test } from '@playwright/test';
-import { CommonLinkVerify, EnvantoSocialVVerify } from './common';
+import { BookcallVerify, CommonLinkVerify, EnvantoSocialVVerify } from './common';
 const home_url = process.env.HOME_URL;
 
 describe('More Page Link Verifications', () => {
@@ -13,8 +13,7 @@ describe('More Page Link Verifications', () => {
     test("Book Demo Call", async ({ page }) => {
         await page.goto(home_url);
         const ondemandLocator = page.locator("//li[@id='menu-item-9335']")
-        const expectedLink = "https://socialv.iqonic.design/socialv-demo-call/";
-        await CommonLinkVerify(page, ondemandLocator, expectedLink);
+        await BookcallVerify(page, ondemandLocator);
     });
 
     test("Live Demo", async ({ page }) => {

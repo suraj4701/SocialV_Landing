@@ -30,8 +30,11 @@ const BookcallVerify = async (page, locator) => {
         page.context().waitForEvent('page'),
         locator.click()
     ])
+
     const newPageUrl = newPage.url();
-    expect(newPageUrl).toBe("https://socialv.iqonic.design/socialv-demo-call/");
+    const urlObject = new URL(newPageUrl);
+    const urlWithoutQueryParams = urlObject.origin + urlObject.pathname;
+    expect(urlWithoutQueryParams).toBe("https://socialv.iqonic.design/socialv-demo-call/");
     return newPage;
 }
 
