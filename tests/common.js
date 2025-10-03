@@ -72,7 +72,7 @@ const EnvantoSocialVAppLinkVerify = async (page, locator) => {
     ])
     const iqonicDesignSpanLocator = newPage.locator("//body/div[1]/div[3]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/h1[1]");
     const verifytext = await iqonicDesignSpanLocator.textContent();
-    expect(verifytext).toContain('SocialV – Community Platform & Social Network Flutter App with BuddyPress (WordPress) Backend');
+    expect(verifytext).toContain('SocialV – Community & Social Network Platform (Flutter App with BuddyPress - WordPress Backend)');
     return newPage;
 }
 
