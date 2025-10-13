@@ -231,7 +231,7 @@ describe('Home Page Link Verifications', () => {
     test("Footer Get a Quote", async ({ page }) => {
         const getQuoteLinkLocator = page.locator("//body/div[@id='main-container']/footer[@id='footer']/div[1]/div[1]/article[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[4]/div[2]/div[1]/ul[1]/li[4]/a[1]");
         await getQuoteLinkLocator.scrollIntoViewIfNeeded();
-        const link = "https://iqonic.tech/cost-calculator/";
+        const link = "https://iqonic.tech/ai-cost-calculator/";
         await CommonLinkVerify(page, getQuoteLinkLocator, link);
     });
 
