@@ -8,7 +8,7 @@ describe('Pricing Page Link Verifications', () => {
         await page.locator("//header/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/nav[1]/ul[1]/li[3]/a[1]").click();
     });
 
-    test.only("Buy Now", async ({ page }) => {
+    test("Buy Now", async ({ page }) => {
         const ondemandLocator = page.locator("//div[@class='elementor-element elementor-element-87ba3b7 elementor-widget elementor-widget-ha-pricing-table happy-addon ha-pricing-table']//a[@class='ha-pricing-table-btn'][normalize-space()='Buy Now']");
         await ondemandLocator.scrollIntoViewIfNeeded();
 
