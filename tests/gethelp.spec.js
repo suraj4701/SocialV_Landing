@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, test } from '@playwright/test';
+import { beforeEach, describe, test } from '@playwright/test';
 import { CommonLinkVerify } from './common';
 const home_url = process.env.HOME_URL;
 
@@ -28,13 +28,7 @@ describe('Get Help Page Link Verifications', () => {
 
     test("Blog", async ({ page }) => {
         const blogLinkLocator = page.locator("//li[@id='menu-item-977']");
-        const [newPage] = await Promise.all([
-            page.context().waitForEvent('page'),
-            blogLinkLocator.click()
-        ]);
-        const newPageUrl = newPage.url();
-        const urlObject = new URL(newPageUrl);
-        const urlWithoutQueryParams = urlObject.origin + urlObject.pathname;
-        expect(urlWithoutQueryParams).toBe("https://iqonic.design/blog-category/socialv/");
+        const link = "https://iqonic.design/blog-category/socialv/";
+        await CommonLinkVerify(page, blogLinkLocator, link);
     });
 });

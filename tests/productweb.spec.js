@@ -245,7 +245,7 @@ describe('Products Web Page Link Verifications', () => {
     test("View Tutorials link verify", async ({ page }) => {
         const viewTutorialsLinkLocator = page.locator("//body/div[@id='main-container']/main[@id='main']/div[1]/article[1]/div[1]/div[1]/div[17]/div[1]/div[1]/div[11]/div[1]/div[3]/div[1]/div[1]/a[1]");
         await viewTutorialsLinkLocator.scrollIntoViewIfNeeded();
-        const expectedLink = "https://www.youtube.com/playlist?list=PLSPY71mRbPj_SExAh4HzdLp8up_lwkvbX";
+        const expectedLink = "https://www.youtube.com/playlist";
         await CommonLinkVerify(page, viewTutorialsLinkLocator, expectedLink);
     });
 

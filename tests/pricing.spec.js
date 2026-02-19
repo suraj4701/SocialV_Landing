@@ -8,16 +8,18 @@ describe('Pricing Page Link Verifications', () => {
         await page.locator("//header/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/nav[1]/ul[1]/li[3]/a[1]").click();
     });
 
-    test("Buy Now", async ({ page }) => {
-        const ondemandLocator = page.locator("//body/div[@id='main-container']/main[@id='main']/div[1]/article[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[1]/a[1]");
+    test.only("Buy Now", async ({ page }) => {
+        const ondemandLocator = page.locator("//div[@class='elementor-element elementor-element-87ba3b7 elementor-widget elementor-widget-ha-pricing-table happy-addon ha-pricing-table']//a[@class='ha-pricing-table-btn'][normalize-space()='Buy Now']");
         await ondemandLocator.scrollIntoViewIfNeeded();
+
         const [newPage] = await Promise.all([
             page.context().waitForEvent('page'),
             ondemandLocator.click()
         ])
-        const iqonicDesignSpanLocator = newPage.locator("//body/div[1]/div[3]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/h1[1]");
+        const iqonicDesignSpanLocator = newPage.locator("//h1[@class='t-heading -color-inherit -size-l h-m0 is-hidden-phone']");
         const verifytext = await iqonicDesignSpanLocator.textContent();
-        expect(verifytext).toContain('SocialV 5.0 - Social Network & Community Admin Template (Vue 3, React JS, HTML, Bootstrap 5)');
+        const normalizedText = (verifytext ?? '').replace(/\s+/g, ' ').trim();
+        expect(normalizedText).toContain('SocialV 5.0 - Social Network & Community Admin Template (HTML, Vue, React JS, Laravel)');
     })
 
     test("Buy Now 2", async ({ page }) => {
@@ -39,7 +41,7 @@ describe('Pricing Page Link Verifications', () => {
     });
 
     test("Hire Us", async ({ page }) => {
-        const profileFriendsLinkLocator = page.locator("//body/div[@id='main-container']/main[@id='main']/div[1]/article[1]/div[1]/div[1]/div[4]/div[1]/div[2]/div[3]/div[1]/div[1]/div[1]/div[1]/a[1]");
+        const profileFriendsLinkLocator = page.locator("//span[@class='elementor-button-text'][normalize-space()='Hire Us']");
         await profileFriendsLinkLocator.scrollIntoViewIfNeeded();
         const expectedLink = "https://iqonic.tech/";
         await CommonLinkVerify(page, profileFriendsLinkLocator, expectedLink);

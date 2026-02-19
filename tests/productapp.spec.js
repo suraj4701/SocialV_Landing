@@ -1,4 +1,4 @@
-import { beforeEach, describe, test } from '@playwright/test';
+import { beforeEach, describe, expect, test } from '@playwright/test';
 import { BookcallVerify, CommonLinkVerify, EnvantoSocialVAppLinkVerify, SocialVAppPlaystore, TrustpilotVerify } from './common';
 const home_url = process.env.HOME_URL;
 
@@ -43,15 +43,25 @@ describe('ProductApp Page Link Verifications', () => {
     test("NetworkUA", async ({ page }) => {
         const profileFriendsLinkLocator = page.locator("//body/div[@id='main-container']/main[@id='main']/div[1]/article[1]/div[1]/div[1]/div[6]/div[1]/div[1]/div[3]/div[1]/div[2]/div[1]/div[1]/a[1]");
         await profileFriendsLinkLocator.scrollIntoViewIfNeeded();
-        const expectedLink = "https://play.google.com/store/apps/details?id=com.network.ua";
-        await CommonLinkVerify(page, profileFriendsLinkLocator, expectedLink);
+
+        const [newPage] = await Promise.all([
+            page.context().waitForEvent('page'),
+            profileFriendsLinkLocator.click()
+        ])
+        const newPageUrl = newPage.url();
+        expect(newPageUrl).toBe("https://play.google.com/store/apps/details?id=com.network.ua");
     });
 
     test("Cafetoday", async ({ page }) => {
         const profileFriendsLinkLocator = page.locator("//body/div[@id='main-container']/main[@id='main']/div[1]/article[1]/div[1]/div[1]/div[6]/div[1]/div[1]/div[3]/div[2]/div[2]/div[1]/div[1]/a[1]");
         await profileFriendsLinkLocator.scrollIntoViewIfNeeded();
-        const expectedLink = "https://play.google.com/store/apps/details?id=com.cafetoday.app&pli=1";
-        await CommonLinkVerify(page, profileFriendsLinkLocator, expectedLink);
+
+        const [newPage] = await Promise.all([
+            page.context().waitForEvent('page'),
+            profileFriendsLinkLocator.click()
+        ])
+        const newPageUrl = newPage.url();
+        expect(newPageUrl).toBe("https://play.google.com/store/apps/details?id=com.cafetoday.app&pli=1");
     });
 
     test("Explore SocialV App", async ({ page }) => {
