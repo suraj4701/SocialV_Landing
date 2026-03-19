@@ -111,7 +111,7 @@ const SocialVAppAppStore = async (page, locator) => {
     ])
     const newPageUrl = newPage.url();
     expect(newPageUrl).toBe("https://apps.apple.com/us/app/socialv/id1641646237");
-    const trustpilotLocator = newPage.locator("//h1[@class='svelte-1bm25t']");
+    const trustpilotLocator = newPage.locator("//h1[normalize-space()='SocialV']");
     const verifytext = await trustpilotLocator.textContent();
     expect(verifytext).toContain('SocialV');
     return newPage;
